@@ -10,6 +10,38 @@
 
 ![NDI Team](site/assets/images/team-us.jpg)
 
+## About NODAYSIDLE
+
+NODAYSIDLE is a two‑person engineering outfit focused on making PCs and workstations behave like dependable tools — predictable, fast, and continuously productive. Our motto is simple: No Days Idle. We tune systems for real workloads (CAD/3D/ML/video), quantify performance with clear budgets, and validate reliability with repeatable tests.
+
+### What We Deliver
+- Diagnostics‑first tuning for latency, throughput, and stability
+- Thermal and power management that sustains performance under load
+- Workflow‑specific pipelines (rendering, simulation, training)
+- Reliability baselines, performance budgets, and measurable SLOs
+
+### Engineering Principles
+- Measure before optimize: profile CPU, memory, I/O, network, and storage
+- Fix the biggest bottleneck first; validate each change with data
+- Prefer simple architectures with explicit caching and observability
+- Harden for real‑world usage: fail‑safe configs, graceful degradation, backups
+
+### Technology Stack
+- Frontend: static HTML/CSS/JS for speed and simplicity
+- CMS: WordPress (`/wp`) for daily posts and media via GUI
+- Server: Nginx + PHP‑FPM + MariaDB on Ubuntu, Certbot for TLS
+- Testing: k6 smoke tests with thresholds; Chrome DevTools and Query Monitor for profiling
+
+### Performance & Reliability
+- Track p95 response time, error rate, and asset load consistency
+- Validate under realistic VUs and durations; watch regressions in CI
+- Keep images optimized (WebP/AVIF) and cache headers tuned at Nginx
+
+### Contact
+- Email: `info@nodaysidle.com`
+- Site: `https://nodaysidle.com/`
+- GitHub: `https://github.com/salvadalba`
+
 A modern static website with a WordPress-powered CMS for daily publishing, deployed behind Nginx with PHP‑FPM and MariaDB. The blog index uses the WordPress REST API, preserving the site’s existing look and feel while enabling GUI content management via `wp-admin`.
 
 ## Highlights
