@@ -18,7 +18,7 @@ jobs:
           DURATION: 30s
         run: |
           mkdir -p perf/results
-          k6 run --summary-trend-stats=avg,min,med,max,p(95),p(99) --out json=perf/results/k6-smoke.json perf/k6-smoke.js
+          k6 run --summary-trend-stats="avg,min,med,max,p(95),p(99)" --out json=perf/results/k6-smoke.json perf/k6-smoke.js
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
