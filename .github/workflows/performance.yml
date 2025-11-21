@@ -1,0 +1,26 @@
+name: Performance - k6 Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  k6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - name: Run k6 smoke
+        env:
+          BASE_URL: https://nodaysidle.com
+          VUS: '10'
+          DURATION: 30s
+        run: |
+          mkdir -p perf/results
+          k6 run --summary-trend-stats=avg,min,med,max,p(95),p(99) --out json=perf/results/k6-smoke.json perf/k6-smoke.js
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-smoke-results
+          path: perf/results

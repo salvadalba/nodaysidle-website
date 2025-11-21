@@ -1,5 +1,7 @@
 # NODAYSIDLE Website
 
+![Performance](https://github.com/salvadalba/nodaysidle-website/actions/workflows/performance.yml/badge.svg) ![Link Check](https://github.com/salvadalba/nodaysidle-website/actions/workflows/link-check.yml/badge.svg)
+
 ## Brand
 
 ![NDI](site/assets/images/logo-primary.jpg)
