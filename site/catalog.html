@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NODAYSIDLE Store — Services and optimization packages">
+  <title>Store — NODAYSIDLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/catalog.html">
+  <meta property="og:title" content="NODAYSIDLE Store">
+  <meta property="og:description" content="Optimization packages and reliability services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/catalog.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body data-page="catalog">
+  <header class="container header">
+    <a href="/index.html" class="logo"><img src="/assets/images/logo.svg" alt="NDI"/></a>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch"><input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode"><span class="slider round"></span></label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/index.html" class="link">Home</a> ›
+      <span>Store</span>
+    </nav>
+    <section class="hero">
+      <div class="container">
+        <h1>NODAYSIDLE Store</h1>
+        <p class="lead">Optimization packages and reliability services.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="filters">
+        <input class="input" id="q" placeholder="Search" />
+        <select class="select" id="cat">
+          <option value="">All categories</option>
+          <option>Professional</option>
+          <option>Gaming</option>
+          <option>Reliability</option>
+        </select>
+        <input class="input" id="min" type="number" placeholder="Min €" />
+        <input class="input" id="max" type="number" placeholder="Max €" />
+        <div class="price-range">
+          <input type="range" id="minRange" min="0" max="1000" step="1" />
+          <input type="range" id="maxRange" min="0" max="1000" step="1" />
+        </div>
+      </div>
+      <div class="chips" id="tag-chips"></div>
+      <div class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/scripts.js"></script>
+</body>
+</html>

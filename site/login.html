@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — NODAYSIDLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/login.html">
+  <meta name="description" content="Sign in to NODAYSIDLE to access services and support">
+  <meta property="og:title" content="Login — NODAYSIDLE">
+  <meta property="og:description" content="Sign in to access optimization services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/login.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body>
+  <header class="container header">
+    <div class="logo">NDI</div>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch">
+            <input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode">
+            <span class="slider round"></span>
+          </label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="padding: 28px 0 100px;">
+    <h1 class="page-title">Login</h1>
+    <div class="login-card">
+      <form id="login-form" novalidate>
+        <div class="form-row">
+          <label for="email">Username or Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" aria-required="true" aria-invalid="false">
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required placeholder="••••••••" aria-required="true" aria-invalid="false">
+        </div>
+        <div class="form-row form-inline">
+          <label class="checkbox">
+            <input type="checkbox" id="remember" name="remember">
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="link">Forgot password?</a>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="ndi-hardware-button" id="login-submit">START_SYSTEM</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/scripts.js"></script>
+</body>
+</html>

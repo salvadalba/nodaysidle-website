@@ -1,0 +1,38 @@
+<!--
+  NODAYSIDLE — Primary SVG Logo (source)
+  Clean, grouped, semantic classes; optimized paths; accessible metadata
+-->
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d" viewBox="0 0 320 80">
+  <title id="t">NODAYSIDLE — Logo</title>
+  <desc id="d">Monogram (N/D/I) with neon accents and geometric wordmark.</desc>
+  <style>
+    .mark { fill: none; stroke-linecap: round; stroke-linejoin: round }
+    .strong { stroke-width: 6 }
+    .mid { stroke-width: 4 }
+    .g { stroke: #39FF14 }
+    .c { stroke: #00D9FF }
+    .p { stroke: #FF10F0 }
+    .panel { fill: #0F0F0F; stroke: #333 }
+    .word { fill: #E7EDF3 }
+  </style>
+  <g id="mark" transform="translate(8,8)">
+    <rect class="panel" x="0" y="0" width="64" height="64" rx="8" ry="8"/>
+    <path class="mark strong g" d="M14 50 V14 M14 14 L50 50 M50 50 V14"/>
+    <path class="mark mid c" d="M54 18 A16 16 0 1 1 54 46"/>
+    <path class="mark mid p" d="M32 20 V44"/>
+  </g>
+  <g id="wordmark" class="word" transform="translate(88,18)">
+    <path d="M0 0 H8 V20 H0 Z"/>
+    <path d="M8 0 H12 L24 20 H16 Z"/>
+    <path d="M24 0 H32 V20 H24 Z"/>
+    <path d="M40 0 H56 V20 H40 Z M44 4 V16 H52 V4 Z"/>
+    <path d="M64 0 H76 Q88 0 88 10 Q88 20 76 20 H64 Z M76 4 Q84 4 84 10 Q84 16 76 16 H68 V4 Z"/>
+    <path d="M96 20 L104 0 H112 L120 20 H112 L110 14 H106 L104 20 Z M108 10 H112 L110 6 Z"/>
+    <path d="M128 0 L136 10 L144 0 H152 L142 14 V20 H134 V14 L124 0 Z"/>
+    <path d="M160 0 H176 V8 H168 V12 H176 V20 H160 V12 H168 V8 H160 Z"/>
+    <path d="M184 0 H200 V6 H192 V14 H200 V20 H184 V14 H192 V6 H184 Z"/>
+    <path d="M208 0 H220 Q232 0 232 10 Q232 20 220 20 H208 Z M220 4 Q228 4 228 10 Q228 16 220 16 H212 V4 Z"/>
+    <path d="M240 0 H248 V16 H256 V20 H240 Z"/>
+    <path d="M264 0 H280 V6 H272 V8 H280 V12 H272 V14 H280 V20 H264 Z"/>
+  </g>
+</svg>

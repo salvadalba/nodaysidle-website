@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NODAYSIDLE Cart">
+  <title>Cart — NODAYSIDLE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/cart.html">
+  <meta property="og:title" content="NODAYSIDLE Cart">
+  <meta property="og:description" content="Manage your cart, save for later, and checkout">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/cart.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body data-page="cart">
+  <header class="container header">
+    <a href="/index.html" class="logo"><img src="/assets/images/logo.svg" alt="NDI"/></a>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch"><input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode"><span class="slider round"></span></label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="container">
+        <h1>Your Cart</h1>
+        <p class="lead">Adjust quantities, save for later, and checkout.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cart neo-raised">
+        <div class="cart-list"></div>
+        <div class="cart-totals"></div>
+      </div>
+      <div class="container">
+        <h2>Saved for Later</h2>
+        <div class="saved-list"></div>
+      </div>
+      <section class="container neo-raised card" style="margin-top:24px;">
+        <h2>Lifetime Guarantee</h2>
+        <p>We stand behind our optimizations for the lifetime of your device. If performance regresses within normal operating conditions, we will re‑diagnose and retune at no additional service fee.</p>
+        <p>Terms: covers tuning and configuration. Hardware faults, third‑party damages, and unsupported modifications are excluded. Fair‑use applies.</p>
+        <div class="actions"><a href="/contact.html" class="ndi-hardware-button">Activate Support</a></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/scripts.js"></script>
+</body>
+</html>

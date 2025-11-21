@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — NODAYSIDLE</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/contact.html">
+  <meta name="description" content="Contact NODAYSIDLE — booking and inquiries">
+  <meta property="og:title" content="Contact — NODAYSIDLE">
+  <meta property="og:description" content="Booking and contact information">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/contact.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body>
+  <header class="container header">
+    <a href="/index.html" class="logo"><img src="/assets/images/logo.svg" alt="NDI"/></a>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch"><input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode"><span class="slider round"></span></label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container" style="padding: 28px 0 60px;">
+    <h1>Contact & Booking</h1>
+    <div class="feature">
+      <p>Use the form to reach us. While we operate without a domain initially, submissions can be sent via email using your local client.</p>
+      <form action="mailto:info@nodaysidle.com" method="post" enctype="text/plain" style="display:grid; gap:12px; max-width:540px;">
+        <input type="text" name="name" placeholder="Your name" required style="padding:12px; border-radius:8px; background:#0f131a; color:#e7edf3; border:1px solid #1a2230;">
+        <input type="email" name="email" placeholder="Your email" required style="padding:12px; border-radius:8px; background:#0f131a; color:#e7edf3; border:1px solid #1a2230;">
+        <textarea name="message" placeholder="Describe your system and goals" rows="6" required style="padding:12px; border-radius:8px; background:#0f131a; color:#e7edf3; border:1px solid #1a2230;"></textarea>
+        <button type="submit" class="btn-primary" style="border:0; cursor:pointer;">Send</button>
+      </form>
+    </div>
+    <p class="lead">Alternatively email <a href="mailto:info@nodaysidle.com" class="link">info@nodaysidle.com</a>.</p>
+  </main>
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/scripts.js"></script>
+</body>
+</html>

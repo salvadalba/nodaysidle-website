@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services — NODAYSIDLE</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/services.html">
+  <meta name="description" content="Diagnostics, tuning, thermal/power optimization, and lifetime support">
+  <meta property="og:title" content="Services — NODAYSIDLE">
+  <meta property="og:description" content="Optimization services for workstations and workflows">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/services.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body>
+  <header class="container header">
+    <a href="/index.html" class="logo"><img src="/assets/images/logo.svg" alt="NDI"/></a>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html" class="active">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch"><input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode"><span class="slider round"></span></label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container" style="padding: 28px 0 60px;">
+    <h1>Services</h1>
+    <div class="features" style="grid-template-columns: 1fr 1fr;">
+      <div class="feature">
+        <h3>Diagnostics</h3>
+        <p>Workload analysis, bottleneck identification, and baseline performance profiling.</p>
+        <div class="actions"><button class="btn-secondary" onclick="addToCart('p1')">Add to Cart</button> <a href="/product.html?id=p1" class="btn-secondary">View</a></div>
+      </div>
+      <div class="feature">
+        <h3>Thermal & Power</h3>
+        <p>Thermal solutions tuning, power plans, and reliability improvements.</p>
+        <div class="actions"><button class="btn-secondary" onclick="addToCart('p3')">Add to Cart</button> <a href="/product.html?id=p3" class="btn-secondary">View</a></div>
+      </div>
+      <div class="feature">
+        <h3>Storage & Memory</h3>
+        <p>I/O optimization, filesystem tuning, cache strategies, memory throughput.</p>
+        <div class="actions"><button class="btn-secondary" onclick="addToCart('p1')">Add to Cart</button> <a href="/product.html?id=p1" class="btn-secondary">View</a></div>
+      </div>
+      <div class="feature">
+        <h3>Pro Workflows</h3>
+        <p>CAD, 3D, ML, video, finance; workload‑specific pipeline optimization.</p>
+        <div class="actions"><button class="btn-secondary" onclick="addToCart('p1')">Add to Cart</button> <a href="/product.html?id=p1" class="btn-secondary">View</a></div>
+      </div>
+    </div>
+    <div class="actions"><a href="/contact.html" class="btn-secondary">Book a Consultation</a></div>
+  </main>
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/app.js"></script>
+  <script src="/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NODAYSIDLE Admin">
+  <title>Admin — NODAYSIDLE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://nodaysidle.com/admin.html">
+  <meta property="og:title" content="NODAYSIDLE Admin">
+  <meta property="og:description" content="Manage products, users, orders, and reviews">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nodaysidle.com/admin.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop">
+</head>
+<body data-page="admin">
+  <header class="container header">
+    <a href="/index.html" class="logo"><img src="/assets/images/logo.svg" alt="NDI"/></a>
+    <nav class="hud">
+      <div class="nav-center">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Hardware</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <div class="nav-right">
+        <div class="terminal-toggle-container">
+          <span id="label-gui">GUI</span>
+          <label class="switch"><input type="checkbox" id="terminal-toggle" aria-label="Toggle terminal mode"><span class="slider round"></span></label>
+          <span id="label-term">TERM</span>
+        </div>
+        <a href="/catalog.html" class="nav-link">Store</a>
+        <a href="/login.html" class="ndi-hardware-button">START_SYSTEM</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="neo-raised card admin">
+      <h1>Admin Dashboard</h1>
+      <div class="muted">Requires sign‑in. Admin can manage products, users, and orders.</div>
+      <div class="admin-grid">
+        <div class="neo-inset card">
+          <h2>Products</h2>
+          <div class="products"></div>
+          <div class="actions">
+            <button class="btn-primary" id="export-products">Export JSON</button>
+            <input type="file" id="import-products" accept="application/json"/>
+            <button class="btn-secondary" id="clear-override">Clear Override</button>
+            <input class="input" id="bulk" type="number" placeholder="Bulk % adjust"/>
+            <button class="btn-primary" id="apply-bulk">Apply</button>
+            <button class="btn-secondary" id="validate-products">Validate Schema</button>
+            <input class="input" id="bulkPreview" type="number" placeholder="Preview %"/>
+            <button class="btn-secondary" id="preview-bulk">Preview</button>
+          </div>
+          <div class="validation"></div>
+          <div class="preview"></div>
+        </div>
+        <div class="neo-inset card">
+          <h2>Users</h2>
+          <div class="users"></div>
+        </div>
+        <div class="neo-raised card">
+          <h2>Orders</h2>
+          <div class="orders"></div>
+        </div>
+        <div class="neo-raised card">
+          <h2>Reviews Moderation</h2>
+          <div class="reviews"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer fixed">
+    <div class="container footer-inner">
+      <div>© NDI (NoDaysIdle) — Slovenia</div>
+      <div class="footer-links">
+        <a href="/contact.html" class="link">Contact</a>
+        <a href="mailto:info@nodaysidle.com" class="link">Email</a>
+        <a href="https://x.com/salvadaba" class="link" target="_blank" rel="noopener">X</a>
+        <a href="https://mastodon.social/@salvadaba" class="link" target="_blank" rel="me noopener">Mastodon</a>
+        <a href="https://github.com/salvadaba" class="link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/scripts.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const u = (window.currentUser && window.currentUser())
+    const box = document.querySelector('.admin')
+    const roles = (u && u.roles) || []
+    const hasAdmin = (window.state.users||[]).some(x => (x.roles||[]).includes('admin'))
+    if (!u) { box.innerHTML = '<div class="muted">Please <a class="link" href="/login.html">sign in</a>.</div>'; return }
+    if (!roles.includes('admin') && hasAdmin) { box.innerHTML = '<div class="muted">Admin access required. Ask an admin to grant access.</div>'; return }
+    if (!roles.includes('admin') && !hasAdmin) {
+      box.innerHTML = '<div class="muted">No admin exists yet. <button class="btn-primary" id="init-admin">Grant admin to me</button></div>'
+      document.getElementById('init-admin').addEventListener('click', () => {
+        u.roles = u.roles || []; if (!u.roles.includes('admin')) u.roles.push('admin'); window.saveUsers(); location.reload()
+      })
+      return
+    }
+    const productsBox = document.querySelector('.products')
+    const usersBox = document.querySelector('.users')
+    const ordersBox = document.querySelector('.orders')
+    const reviewsBox = document.querySelector('.reviews')
+    productsBox.innerHTML = (window.state.products||[]).map((p,i) => `
+      <div class="product-row cart-row">
+        <input class="input" value="${p.title}" data-i="${i}" data-f="title"/>
+        <input class="input" type="number" value="${p.price}" data-i="${i}" data-f="price"/>
+        <input class="input" value="${p.currency}" data-i="${i}" data-f="currency"/>
+        <input class="input" value="${p.category || ''}" data-i="${i}" data-f="category"/>
+        <input class="input" value="${(p.tags||[]).join(',')}" data-i="${i}" data-f="tags"/>
+        <div class="actions"><button class="btn-primary save" data-i="${i}">Save</button></div>
+      </div>
+    `).join('')
+    usersBox.innerHTML = (window.state.users||[]).map(x => `
+      <div class="cart-row">
+        <div class="cart-title">${x.email}</div>
+        <div>${(x.roles||[]).includes('admin') ? 'admin' : 'user'}</div>
+        <div class="actions">
+          ${!(x.roles||[]).includes('admin') ? `<button class="btn-primary grant" data-id="${x.id}">Grant admin</button>` : `<button class="btn-secondary revoke" data-id="${x.id}">Revoke admin</button>`}
+        </div>
+      </div>
+    `).join('')
+    const orders = (window.state.users||[]).flatMap(u => u.orders.map(o => ({...o, user: u.email})))
+    ordersBox.innerHTML = orders.length ? orders.map(o => `
+      <div>Order ${o.id} — ${o.user} — ${new Date(o.date).toLocaleString()} — ${o.totals.total}</div>
+    `).join('') : '<div class="muted">No orders</div>'
+    const all = JSON.parse(localStorage.getItem('ndi_reviews') || '{}')
+    const items = Object.entries(all).flatMap(([pid, arr]) => arr.map(r => ({...r, productId: pid})))
+    reviewsBox.innerHTML = items.length ? items.map(r => `
+      <div class="cart-row">
+        <div class="cart-title">${r.userEmail} • ${r.rating}★ • ${r.productId}</div>
+        <div>${r.title || ''}</div>
+        <div>${r.status || 'approved'}</div>
+        <div class="actions">
+          <button class="btn-primary approve" data-p="${r.productId}" data-ts="${r.date}">Approve</button>
+          <button class="btn-secondary reject" data-p="${r.productId}" data-ts="${r.date}">Reject</button>
+          <button class="btn-secondary remove" data-p="${r.productId}" data-ts="${r.date}">Delete</button>
+        </div>
+      </div>
+    `).join('') : '<div class="muted">No reviews</div>'
+    document.getElementById('export-products').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(window.state.products, null, 2)], { type: 'application/json' })
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = 'products-export.json'
+      a.click()
+    })
+    productsBox.querySelectorAll('.save').forEach(btn => btn.addEventListener('click', () => {
+      const i = parseInt(btn.getAttribute('data-i'),10)
+      const inputs = productsBox.querySelectorAll(`[data-i="${i}"]`)
+      const p = window.state.products[i]
+      inputs.forEach(inp => {
+        const f = inp.getAttribute('data-f')
+        const v = inp.value
+        if (f === 'price') p[f] = parseFloat(v)
+        else if (f === 'tags') p[f] = v.split(',').map(s=>s.trim()).filter(Boolean)
+        else p[f] = v
+      })
+      localStorage.setItem('ndi_products_override', JSON.stringify(window.state.products))
+      alert('Saved product override')
+    }))
+    document.getElementById('import-products').addEventListener('change', async (e) => {
+      const file = e.target.files[0]; if (!file) return
+      const text = await file.text()
+      try {
+        const json = JSON.parse(text)
+        if (!Array.isArray(json)) throw new Error('Root must be array')
+        const ok = json.every(p => p && typeof p.id==='string' && typeof p.title==='string' && typeof p.price==='number' && typeof p.currency==='string' && typeof p.image==='string' && typeof p.rating==='number' && typeof p.reviews==='number' && typeof p.stock==='number')
+        if (!ok) throw new Error('Invalid product schema')
+        localStorage.setItem('ndi_products_override', JSON.stringify(json))
+        alert('Imported override JSON'); location.reload()
+      } catch { alert('Invalid JSON') }
+    })
+    document.getElementById('clear-override').addEventListener('click', () => {
+      localStorage.removeItem('ndi_products_override'); alert('Cleared override'); location.reload()
+    })
+    document.getElementById('apply-bulk').addEventListener('click', () => {
+      const pct = parseFloat(document.getElementById('bulk').value)
+      if (!isFinite(pct)) { alert('Enter a valid percent'); return }
+      window.state.products.forEach(p => { p.price = Math.round(p.price * (1 + pct/100) * 100) / 100 })
+      localStorage.setItem('ndi_products_override', JSON.stringify(window.state.products))
+      alert('Applied bulk adjust'); location.reload()
+    })
+    document.getElementById('validate-products').addEventListener('click', () => {
+      const vbox = document.querySelector('.validation'); vbox.innerHTML = ''
+      let errors = []
+      window.state.products.forEach((p,i)=>{
+        const fields = ['id','title','price','currency','image','rating','reviews','stock']
+        fields.forEach(f=>{
+          const ok = (
+            (f==='id' || f==='title' || f==='currency' || f==='image') ? typeof p[f]==='string' && p[f].length>0 :
+            (f==='price' || f==='rating') ? typeof p[f]==='number' && isFinite(p[f]) :
+            (f==='reviews' || f==='stock') ? typeof p[f]==='number' && Number.isInteger(p[f]) : false
+          )
+          const input = productsBox.querySelector(`[data-i="${i}"][data-f="${f}"]`)
+          if (input) input.classList.toggle('error', !ok)
+          if (!ok) errors.push(`Row ${i+1}: ${f} invalid`)
+        })
+      })
+      vbox.textContent = errors.length ? errors.join(' • ') : 'All good'
+    })
+    document.getElementById('preview-bulk').addEventListener('click', () => {
+      const pct = parseFloat(document.getElementById('bulkPreview').value)
+      const pbox = document.querySelector('.preview'); pbox.innerHTML = ''
+      if (!isFinite(pct)) { pbox.textContent = 'Enter a valid percent'; return }
+      pbox.innerHTML = window.state.products.map(p=>`<div>${p.title} — ${p.price} → ${Math.round(p.price*(1+pct/100)*100)/100}</div>`).join('')
+    })
+    usersBox.querySelectorAll('.grant').forEach(b => b.addEventListener('click', () => {
+      const id = b.getAttribute('data-id')
+      const user = window.state.users.find(u => u.id === id)
+      user.roles = user.roles || []
+      if (!user.roles.includes('admin')) user.roles.push('admin')
+      window.saveUsers(); location.reload()
+    }))
+    usersBox.querySelectorAll('.revoke').forEach(b => b.addEventListener('click', () => {
+      const id = b.getAttribute('data-id')
+      const user = window.state.users.find(u => u.id === id)
+      user.roles = (user.roles || []).filter(r => r !== 'admin')
+      window.saveUsers(); location.reload()
+    }))
+    reviewsBox.querySelectorAll('.approve').forEach(b => b.addEventListener('click', () => {
+      const pid = b.getAttribute('data-p'); const ts = parseInt(b.getAttribute('data-ts'),10)
+      const all = JSON.parse(localStorage.getItem('ndi_reviews') || '{}')
+      all[pid] = (all[pid]||[]).map(r => r.date===ts ? { ...r, status: 'approved' } : r)
+      localStorage.setItem('ndi_reviews', JSON.stringify(all)); location.reload()
+    }))
+    reviewsBox.querySelectorAll('.reject').forEach(b => b.addEventListener('click', () => {
+      const pid = b.getAttribute('data-p'); const ts = parseInt(b.getAttribute('data-ts'),10)
+      const all = JSON.parse(localStorage.getItem('ndi_reviews') || '{}')
+      all[pid] = (all[pid]||[]).map(r => r.date===ts ? { ...r, status: 'rejected' } : r)
+      localStorage.setItem('ndi_reviews', JSON.stringify(all)); location.reload()
+    }))
+    reviewsBox.querySelectorAll('.remove').forEach(b => b.addEventListener('click', () => {
+      const pid = b.getAttribute('data-p'); const ts = parseInt(b.getAttribute('data-ts'),10)
+      const all = JSON.parse(localStorage.getItem('ndi_reviews') || '{}')
+      all[pid] = (all[pid]||[]).filter(r => r.date !== ts)
+      localStorage.setItem('ndi_reviews', JSON.stringify(all)); location.reload()
+    }))
+  })
+  </script>
+</body>
+</html>

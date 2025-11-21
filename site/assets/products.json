@@ -1,0 +1,47 @@
+[
+  {
+    "id": "p1",
+    "title": "NODAYSIDLE Workstation Tuning",
+    "slug": "nodaysidle-workstation-tuning",
+    "price": 299.0,
+    "currency": "EUR",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    "rating": 4.8,
+    "reviews": 124,
+    "stock": 20,
+    "category": "Professional",
+    "tags": ["workstation","cad","3d","ml","video"],
+    "description": "Precision optimization for professional workstations: CAD, 3D, ML, video.",
+    "specs": ["Thermal tuning", "Power delivery checks", "Storage throughput", "Memory timings"]
+  },
+  {
+    "id": "p2",
+    "title": "NODAYSIDLE Gaming Optimization",
+    "slug": "nodaysidle-gaming-optimization",
+    "price": 199.0,
+    "currency": "EUR",
+    "image": "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop",
+    "rating": 4.7,
+    "reviews": 89,
+    "stock": 35,
+    "category": "Gaming",
+    "tags": ["latency","frame pacing","drivers","network"],
+    "description": "Maximize frame consistency and responsiveness for modern games.",
+    "specs": ["Latency tuning", "Frame pacing", "Driver optimization", "Network shaping"]
+  },
+  {
+    "id": "p3",
+    "title": "NODAYSIDLE Reliability Package",
+    "slug": "nodaysidle-reliability-package",
+    "price": 149.0,
+    "currency": "EUR",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+    "rating": 4.9,
+    "reviews": 203,
+    "stock": 50,
+    "category": "Reliability",
+    "tags": ["monitoring","alerts","failover","audits"],
+    "description": "24/7 monitoring and rapid response for mission‑critical systems.",
+    "specs": ["Health checks", "Alerting", "Failover guidance", "Periodic audits"]
+  }
+]
